@@ -1,0 +1,47 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+<style>
+    /* Scoped styles for Time List page */
+
+    /* Page title styles */
+    .time-title {
+        font-size: 2.5em;
+        color: #007bff; /* Primary color */
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+
+    /* List styles */
+    .time-list {
+        list-style-type: none; /* Remove default list style */
+        padding: 0;
+        margin: 0 auto;
+        max-width: 600px; /* Center the list */
+    }
+
+    .time-item {
+        background-color: #ffffff; /* White background */
+        border: 1px solid #dee2e6; /* Light border */
+        border-radius: 8px; /* Rounded corners */
+        padding: 15px;
+        margin-bottom: 10px; /* Space between items */
+        font-size: 1.2em; /* Larger font size */
+        color: #343a40; /* Dark text color */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition */
+    }
+
+    .time-item:hover {
+        transform: translateY(-5px); /* Lift effect on hover */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+    }
+</style>
+<h1 class="time-title">Time List</h1>
+<ul class="time-list">
+    {% for time in times %}
+    <li class="time-item">{{ time.time }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

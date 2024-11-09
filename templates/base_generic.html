@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Timetable</title>
+    <style>
+        /* General body styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #007bff;
+            padding: 20px;
+            color: white;
+            border-bottom: 5px solid #0056b3;
+        }
+
+        /* Navigation styles */
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        nav ul li {
+            margin: 0;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffcc00;
+            transform: scale(1.1);
+        }
+
+        /* Main content styles */
+        main {
+            padding: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'cafedra_list' %}">Cafedras</a></li>
+                <li><a href="{% url 'subject_list' %}">Subjects</a></li>
+                <li><a href="{% url 'time_list' %}">Times</a></li>
+                <li><a href="{% url 'teacher_list' %}">Teachers</a></li>
+                <li><a href="{% url 'clas_list' %}">Classes</a></li>
+                <li><a href="{% url 'timetable_list' %}">Timetables</a></li>
+                <li><a href="{% url 'pupil_list' %}">Pupils</a></li>
+                <li><a href="{% url 'gt_2' %}">Classes greater than 2</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>

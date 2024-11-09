@@ -1,0 +1,73 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<style>
+    /* Scoped styles for Students Table */
+
+    /* Page title styles */
+    .students-title {
+        font-size: 2em;
+        color: #007bff; /* Primary color */
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+
+    /* Table styles */
+    .students-table {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        border-collapse: collapse; /* Remove gaps between table cells */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    }
+
+    .students-table th, .students-table td {
+        border: 1px solid #dee2e6; /* Light border */
+        padding: 12px;
+        text-align: left;
+    }
+
+    .students-table th {
+        background-color: #007bff; /* Primary color */
+        color: #ffffff; /* White text */
+        font-weight: bold;
+        text-transform: uppercase; /* Uppercase text */
+    }
+
+    .students-table td {
+        background-color: #ffffff; /* White background */
+    }
+
+    .students-table tr:nth-child(even) td {
+        background-color: #f8f9fa; /* Alternating row color */
+    }
+
+    .students-table tr:hover td {
+        background-color: #e9ecef; /* Highlight row on hover */
+    }
+
+</style>
+
+<h2 class="students-title">Students in Grades 2 and Above</h2>
+
+<table class="students-table">
+    <thead>
+        <tr>
+            <th>Student Name</th>
+            <th>Age</th>
+            <th>Class Grade</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for pupil in pupils %}
+        <tr>
+            <td>{{ pupil.name }}</td>
+            <td>{{ pupil.age }}</td>
+            <td>{{ pupil.clas.grade }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="3">No students found in grades 2 and above.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}
