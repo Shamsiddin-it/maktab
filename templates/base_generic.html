@@ -28,7 +28,7 @@
             list-style: none;
             padding: 0;
             display: flex;
-            justify-content: center;
+            justify-content: start;
             gap: 15px;
         }
 
@@ -59,18 +59,30 @@
     <header>
         <nav>
             <ul>
-                <li><a href="{% url 'cafedra_list' %}">Cafedras</a></li>
-                <li><a href="{% url 'subject_list' %}">Subjects</a></li>
-                <li><a href="{% url 'time_list' %}">Times</a></li>
-                <li><a href="{% url 'teacher_list' %}">Teachers</a></li>
-                <li><a href="{% url 'clas_list' %}">Classes</a></li>
-                <li><a href="{% url 'timetable_list' %}">Timetables</a></li>
-                <li><a href="{% url 'pupil_list' %}">Pupils</a></li>
-                <li><a href="{% url 'gt_2' %}">Classes greater than 2</a></li>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'pupil_create' %}">Add pupil</a></li>
+                    <li><a href="{% url 'clas_create' %}">Add clas</a></li>
+                    <li><a href="{% url 'cafedra_list' %}">Cafedras</a></li>
+                    <li><a href="{% url 'subject_list' %}">Subjects</a></li>
+                    <li><a href="{% url 'timetable_list' %}">Timetables</a></li>
+                    <li><a href="{% url 'time_list' %}">Times</a></li>
+                    <li><a href="{% url 'teacher_list' %}">Teachers</a></li>
+                    <li><a href="{% url 'clas_list' %}">Classes</a></li>
+                    {% if user.username == 'shamsiddin' %}
+                        <li><a href="{% url 'pupil_list' %}">Pupils</a></li>
+                        <li><a href="{% url 'gt_2' %}">Classes greater than 2</a></li>
+                    {% endif %}
+                {% endif %}
+                {% if user.is_authenticated %}
+                    <a style = "margin-left: 200px;" href = "{% url "logout" %}">Log Out</a>
+                {% else %}
+                    <a href = "{% url "login" %}">Log In</a>
+                {% endif %}
             </ul>
         </nav>
     </header>
-
+    
     <main>
         {% block content %}
         {% endblock %}

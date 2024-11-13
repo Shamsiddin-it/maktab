@@ -41,6 +41,12 @@ class Clas(models.Model):
     )
     grade = models.CharField(choices=GRADE, max_length=50)
     headteacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
+    class Meta:
+        default_permissions = ('add', 'change', 'delete') 
+        permissions = (
+            ('view_clas', 'Can view clas'),
+        )
+
     def __str__(self):
         return self.grade
 

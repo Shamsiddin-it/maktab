@@ -13,35 +13,64 @@
         margin-bottom: 30px;
     }
 
-    /* List styles */
-    .timetable-list {
-        list-style-type: none; /* Remove default list style */
-        padding: 0;
+    /* Table styles */
+    .timetable-table {
+        width: 100%;
+        max-width: 800px;
         margin: 0 auto;
-        max-width: 800px; /* Center the list */
+        border-collapse: collapse; /* Remove gaps between table cells */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     }
 
-    .timetable-item {
-        background-color: #ffffff; /* White background */
+    .timetable-table th, .timetable-table td {
         border: 1px solid #dee2e6; /* Light border */
-        border-radius: 8px; /* Rounded corners */
-        padding: 15px;
-        margin-bottom: 10px; /* Space between items */
-        font-size: 1.2em; /* Larger font size */
-        color: #343a40; /* Dark text color */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-        transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition */
+        padding: 12px;
+        text-align: left;
     }
 
-    .timetable-item:hover {
-        transform: translateY(-5px); /* Lift effect on hover */
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+    .timetable-table th {
+        background-color: #007bff; /* Primary color */
+        color: #ffffff; /* White text */
+        font-weight: bold;
+        text-transform: uppercase; /* Uppercase text */
     }
+
+    .timetable-table td {
+        background-color: #ffffff; /* White background */
+    }
+
+    .timetable-table tr:nth-child(even) td {
+        background-color: #f8f9fa; /* Alternating row color */
+    }
+
+    .timetable-table tr:hover td {
+        background-color: #e9ecef; /* Highlight row on hover */
+    }
+
 </style>
+
 <h1 class="timetable-title">Timetable</h1>
-<ul class="timetable-list">
-    {% for timetable in timetables %}
-    <li class="timetable-item">{{ timetable.subject.name }} - {{ timetable.clas.grade }} - {{ timetable.teacher.name }} - {{ timetable.time.time }} - {{ timetable.weeday }}</li>
-    {% endfor %}
-</ul>
+
+<table class="timetable-table">
+    <thead>
+        <tr>
+            <th>Subject</th>
+            <th>Class</th>
+            <th>Teacher</th>
+            <th>Time</th>
+            <th>Weekday</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for timetable in timetables %}
+        <tr>
+            <td>{{ timetable.subject.name }}</td>
+            <td>{{ timetable.clas.grade }}</td>
+            <td>{{ timetable.teacher.name }}</td>
+            <td>{{ timetable.time.time }}</td>
+            <td>{{ timetable.weeday }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}
